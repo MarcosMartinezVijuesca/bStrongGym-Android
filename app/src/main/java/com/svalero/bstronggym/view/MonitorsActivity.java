@@ -1,4 +1,4 @@
 package com.svalero.bstronggym.view;
 
-public class MonitorActivity {
+public class MonitorsActivity {
 }

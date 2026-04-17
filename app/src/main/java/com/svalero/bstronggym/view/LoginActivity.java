@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import com.svalero.bstronggym.R;
 import com.svalero.bstronggym.contract.LoginContract;
@@ -29,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
         sessionManager = new SessionManager(this);
 
-        // Si ya hay sesión activa, ir directamente al MainActivity
+
         if (sessionManager.isLoggedIn()) {
             goToMain();
             return;
@@ -52,9 +54,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     private void showRegisterDialog() {
-        String[] roles = {"MEMBER", "ADMIN"};
-        final String[] selectedRole = {"MEMBER"};
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Registro");
 
@@ -63,13 +62,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
         EditText etDialogUsername = dialogView.findViewById(R.id.et_dialog_username);
         EditText etDialogPassword = dialogView.findViewById(R.id.et_dialog_password);
-
-        builder.setSingleChoiceItems(roles, 0, (dialog, which) -> selectedRole[0] = roles[which]);
+        RadioGroup rgRole = dialogView.findViewById(R.id.rg_role);
 
         builder.setPositiveButton("Registrar", (dialog, which) -> {
             String username = etDialogUsername.getText().toString().trim();
             String password = etDialogPassword.getText().toString().trim();
-            presenter.register(username, password, selectedRole[0]);
+            String role = rgRole.getCheckedRadioButtonId() == R.id.rb_admin ? "ADMIN" : "MEMBER";
+            presenter.register(username, password, role);
         });
 
         builder.setNegativeButton("Cancelar", null);

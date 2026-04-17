@@ -25,6 +25,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Selecciona tu rol:"
-        android:layout_marginBottom="4dp"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <RadioGroup
+        android:id="@+id/rg_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MEMBER"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/rb_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADMIN"/>
+
+    </RadioGroup>
 
 </LinearLayout>
