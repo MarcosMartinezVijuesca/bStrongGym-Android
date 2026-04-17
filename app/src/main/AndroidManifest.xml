@@ -27,6 +27,8 @@
         <activity android:name=".view.MainActivity"/>
         <activity android:name=".view.MembersActivity"/>
         <activity android:name=".view.MemberFormActivity"/>
+        <activity android:name=".view.ActivitiesActivity"/>
+        <activity android:name=".view.ActivityFormActivity"/>
 
     </application>
 
