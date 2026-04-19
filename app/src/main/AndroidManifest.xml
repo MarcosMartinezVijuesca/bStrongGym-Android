@@ -37,6 +37,8 @@
         <activity android:name=".view.WorkoutsActivity"/>
         <activity android:name=".view.WorkoutFormActivity"/>
         <activity android:name=".view.MapActivity"/>
+        <activity android:name=".view.SubscriptionsActivity"/>
+        <activity android:name=".view.SubscriptionFormActivity"/>
 
 
     </application>

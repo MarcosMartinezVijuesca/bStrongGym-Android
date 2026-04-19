@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +20,23 @@ import java.util.List;
 public class ActivityFormActivity extends AppCompatActivity implements ActivityContract.View {
 
     private EditText etName, etDescription, etCapacity, etDuration, etPrice, etMonitorId;
+    private TextView tvCurrentMonitor;
     private CheckBox cbActive;
     private Button btnSave;
     private ActivityPresenter presenter;
     private long activityId = -1;
+
+    @Override
+    public void onActivityLoaded(Activity activity) {
+        etName.setText(activity.getName());
+        etDescription.setText(activity.getDescription());
+        etCapacity.setText(String.valueOf(activity.getCapacity()));
+        etDuration.setText(String.valueOf(activity.getDurationMinutes()));
+        etPrice.setText(String.valueOf(activity.getPricePerSession()));
+        etMonitorId.setText(String.valueOf(activity.getMonitorId()));
+        cbActive.setChecked(activity.isActive());
+        tvCurrentMonitor.setText("Monitor actual: " + activity.getMonitorName());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +55,16 @@ public class ActivityFormActivity extends AppCompatActivity implements ActivityC
         etDuration = findViewById(R.id.et_duration);
         etPrice = findViewById(R.id.et_price);
         etMonitorId = findViewById(R.id.et_monitorId);
+        tvCurrentMonitor = findViewById(R.id.tv_current_monitor);
         cbActive = findViewById(R.id.cb_active);
         btnSave = findViewById(R.id.btn_save);
 
         if (getIntent().hasExtra("activity_id")) {
             activityId = getIntent().getLongExtra("activity_id", -1);
-            etName.setText(getIntent().getStringExtra("activity_name"));
-            etDescription.setText(getIntent().getStringExtra("activity_description"));
-            etCapacity.setText(String.valueOf(getIntent().getIntExtra("activity_capacity", 0)));
-            etDuration.setText(String.valueOf(getIntent().getIntExtra("activity_duration", 0)));
-            etPrice.setText(String.valueOf(getIntent().getFloatExtra("activity_price", 0)));
-            etMonitorId.setText(String.valueOf(getIntent().getLongExtra("activity_monitorId", 0)));
-            cbActive.setChecked(getIntent().getBooleanExtra("activity_active", true));
             getSupportActionBar().setTitle("Editar actividad");
+            presenter.loadActivity(activityId);
         } else {
+            tvCurrentMonitor.setVisibility(android.view.View.GONE);
             getSupportActionBar().setTitle("Nueva actividad");
         }
 

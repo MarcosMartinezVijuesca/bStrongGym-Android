@@ -15,7 +15,7 @@ import com.svalero.bstronggym.util.SessionManager;
 public class MainActivity extends AppCompatActivity {
 
     private SessionManager sessionManager;
-    private Button btnMembers, btnActivities, btnBookings, btnMonitors, btnWorkouts, btnMap;
+    private Button btnMembers, btnActivities, btnBookings, btnMonitors, btnWorkouts, btnSubscriptions, btnMap;
     private TextView tvWelcome, tvRole;
 
     @Override
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         btnBookings = findViewById(R.id.btn_bookings);
         btnMonitors = findViewById(R.id.btn_monitors);
         btnWorkouts = findViewById(R.id.btn_workouts);
+        btnSubscriptions = findViewById(R.id.btn_subscriptions);
         btnMap = findViewById(R.id.btn_map);
 
         tvWelcome.setText("Bienvenido, " + sessionManager.getUsername());
@@ -57,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         btnWorkouts.setOnClickListener(v ->
                 startActivity(new Intent(this, WorkoutsActivity.class)));
+
+        btnSubscriptions.setOnClickListener(v ->
+                startActivity(new Intent(this, SubscriptionsActivity.class)));
 
         btnMap.setOnClickListener(v ->
                 startActivity(new Intent(this, MapActivity.class)));

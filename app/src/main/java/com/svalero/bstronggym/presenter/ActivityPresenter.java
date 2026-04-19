@@ -41,6 +41,25 @@ public class ActivityPresenter implements ActivityContract.Presenter {
     }
 
     @Override
+    public void loadActivity(long id) {
+        apiService.getActivity(id).enqueue(new Callback<Activity>() {
+            @Override
+            public void onResponse(Call<Activity> call, Response<Activity> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    view.onActivityLoaded(response.body());
+                } else {
+                    view.onError("Error al cargar la actividad");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Activity> call, Throwable t) {
+                view.onError("Error de conexión: " + t.getMessage());
+            }
+        });
+    }
+
+    @Override
     public void loadActivitiesByName(String name) {
         apiService.getActivitiesByName(name).enqueue(new Callback<List<Activity>>() {
             @Override

@@ -14,60 +14,70 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Nombre"
-        android:inputType="text"
+        android:text="Tipo de suscripción:"
+        android:textStyle="bold"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="8dp"/>
+
+    <RadioGroup
+        android:id="@+id/rg_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+        <RadioButton
+            android:id="@+id/rb_monthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MONTHLY"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/rb_quarterly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="QUARTERLY"/>
+
+        <RadioButton
+            android:id="@+id/rb_annual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ANNUAL"/>
+
+    </RadioGroup>
 
     <EditText
-        android:id="@+id/et_description"
+        android:id="@+id/et_startDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descripción"
+        android:hint="Fecha inicio (YYYY-MM-DD)"
         android:inputType="text"
         android:layout_marginBottom="12dp"/>
 
     <EditText
-        android:id="@+id/et_capacity"
+        android:id="@+id/et_endDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Capacidad"
-        android:inputType="number"
-        android:layout_marginBottom="12dp"/>
-
-    <EditText
-        android:id="@+id/et_duration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Duración (minutos)"
-        android:inputType="number"
+        android:hint="Fecha fin (YYYY-MM-DD)"
+        android:inputType="text"
         android:layout_marginBottom="12dp"/>
 
     <EditText
         android:id="@+id/et_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Precio por sesión"
+        android:hint="Precio"
         android:inputType="numberDecimal"
         android:layout_marginBottom="12dp"/>
 
-    <TextView
-        android:id="@+id/tv_current_monitor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="13sp"
-        android:textColor="?attr/colorPrimary"
-        android:layout_marginBottom="4dp"/>
-
     <EditText
-        android:id="@+id/et_monitorId"
+        android:id="@+id/et_memberId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ID del monitor"
+        android:hint="ID del socio"
         android:inputType="number"
         android:layout_marginBottom="12dp"/>
 
@@ -77,6 +87,13 @@
         android:layout_height="wrap_content"
         android:text="Activa"
         android:checked="true"
+        android:layout_marginBottom="8dp"/>
+
+    <CheckBox
+        android:id="@+id/cb_autoRenewal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Renovación automática"
         android:layout_marginBottom="24dp"/>
 
     <Button

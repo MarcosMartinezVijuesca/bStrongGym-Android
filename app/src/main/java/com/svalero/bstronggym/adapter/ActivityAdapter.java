@@ -47,7 +47,6 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
 
         holder.tvName.setText(activity.getName());
         holder.tvDuration.setText(activity.getDurationMinutes() + " min");
-        holder.tvPrice.setText(activity.getPricePerSession() + " €/sesión");
         holder.cbActive.setChecked(activity.isActive());
 
         holder.itemView.setOnClickListener(v -> {
@@ -60,6 +59,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
             intent.putExtra("activity_price", activity.getPricePerSession());
             intent.putExtra("activity_active", activity.isActive());
             intent.putExtra("activity_monitorId", activity.getMonitorId());
+            intent.putExtra("activity_monitorName", activity.getMonitorName());
             context.startActivity(intent);
         });
 
@@ -77,7 +77,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
     }
 
     public static class ActivityViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvDuration, tvPrice;
+        TextView tvName, tvDuration;
         CheckBox cbActive;
         ImageView ivDelete;
 
@@ -85,7 +85,6 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
             super(itemView);
             tvName = itemView.findViewById(R.id.tv_activity_name);
             tvDuration = itemView.findViewById(R.id.tv_activity_duration);
-            tvPrice = itemView.findViewById(R.id.tv_activity_price);
             cbActive = itemView.findViewById(R.id.cb_activity_active);
             ivDelete = itemView.findViewById(R.id.iv_activity_delete);
         }

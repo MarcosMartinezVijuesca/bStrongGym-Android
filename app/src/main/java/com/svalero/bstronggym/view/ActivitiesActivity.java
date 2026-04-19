@@ -117,4 +117,6 @@ public class ActivitiesActivity extends AppCompatActivity implements ActivityCon
         super.onResume();
         presenter.loadActivities();
     }
+    @Override
+    public void onActivityLoaded(Activity activity) {}
 }
