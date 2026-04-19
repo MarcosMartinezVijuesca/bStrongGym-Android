@@ -33,6 +33,9 @@
         <activity android:name=".view.MonitorFormActivity"/>
         <activity android:name=".view.BookingFormActivity"/>
         <activity android:name=".view.BookingsActivity"/>
+        <activity android:name=".view.WorkoutsActivity"/>
+        <activity android:name=".view.WorkoutFormActivity"/>
+
 
     </application>
 
