@@ -31,6 +31,8 @@
         <activity android:name=".view.ActivityFormActivity"/>
         <activity android:name=".view.MonitorsActivity"/>
         <activity android:name=".view.MonitorFormActivity"/>
+        <activity android:name=".view.BookingFormActivity"/>
+        <activity android:name=".view.BookingsActivity"/>
 
     </application>
 
