@@ -60,9 +60,9 @@ public class SubscriptionFormActivity extends AppCompatActivity implements Subsc
             else if ("ANNUAL".equals(type)) rgType.check(R.id.rb_annual);
             else rgType.check(R.id.rb_monthly);
 
-            getSupportActionBar().setTitle("Editar suscripción");
+            getSupportActionBar().setTitle(getString(R.string.edit_subscription));
         } else {
-            getSupportActionBar().setTitle("Nueva suscripción");
+            getSupportActionBar().setTitle(getString(R.string.new_subscription));
         }
 
         btnSave.setOnClickListener(v -> {
@@ -71,19 +71,19 @@ public class SubscriptionFormActivity extends AppCompatActivity implements Subsc
             String memberIdStr = etMemberId.getText().toString().trim();
 
             if (startDate.isEmpty() || !startDate.matches("\\d{4}-\\d{2}-\\d{2}")) {
-                etStartDate.setError("Fecha inicio obligatoria con formato YYYY-MM-DD");
+                etStartDate.setError(getString(R.string.error_start_date));
                 etStartDate.requestFocus();
                 return;
             }
 
             if (endDate.isEmpty() || !endDate.matches("\\d{4}-\\d{2}-\\d{2}")) {
-                etEndDate.setError("Fecha fin obligatoria con formato YYYY-MM-DD");
+                etEndDate.setError(getString(R.string.error_end_date));
                 etEndDate.requestFocus();
                 return;
             }
 
             if (memberIdStr.isEmpty() || Long.parseLong(memberIdStr) < 1) {
-                etMemberId.setError("El ID del socio es obligatorio");
+                etMemberId.setError(getString(R.string.error_member_id));
                 etMemberId.requestFocus();
                 return;
             }
@@ -125,7 +125,7 @@ public class SubscriptionFormActivity extends AppCompatActivity implements Subsc
 
     @Override
     public void onSubscriptionSaved() {
-        Toast.makeText(this, "Suscripción guardada correctamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.subscription_saved), Toast.LENGTH_SHORT).show();
         finish();
     }
 

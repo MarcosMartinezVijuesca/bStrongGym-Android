@@ -37,7 +37,7 @@ public class BookingsActivity extends AppCompatActivity implements BookingContra
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Reservas");
+        getSupportActionBar().setTitle(getString(R.string.bookings));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         presenter = new BookingPresenter(this);
@@ -49,10 +49,10 @@ public class BookingsActivity extends AppCompatActivity implements BookingContra
 
         adapter = new BookingAdapter(bookingList, this, booking -> {
             new AlertDialog.Builder(this)
-                    .setTitle("Eliminar reserva")
-                    .setMessage("¿Estás seguro de que quieres eliminar esta reserva?")
-                    .setPositiveButton("Eliminar", (dialog, which) -> presenter.deleteBooking(booking.getId()))
-                    .setNegativeButton("Cancelar", null)
+                    .setTitle(getString(R.string.delete))
+                    .setMessage(getString(R.string.confirm_delete) + "?")
+                    .setPositiveButton(getString(R.string.delete), (dialog, which) -> presenter.deleteBooking(booking.getId()))
+                    .setNegativeButton(getString(R.string.cancel), null)
                     .show();
         });
 
@@ -110,9 +110,9 @@ public class BookingsActivity extends AppCompatActivity implements BookingContra
     @Override
     public void onError(String message) {
         new AlertDialog.Builder(this)
-                .setTitle("Error")
+                .setTitle(getString(R.string.error_title))
                 .setMessage(message)
-                .setPositiveButton("OK", null)
+                .setPositiveButton(getString(R.string.ok), null)
                 .show();
     }
 

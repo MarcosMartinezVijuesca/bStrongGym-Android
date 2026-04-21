@@ -20,23 +20,11 @@ import java.util.List;
 public class ActivityFormActivity extends AppCompatActivity implements ActivityContract.View {
 
     private EditText etName, etDescription, etCapacity, etDuration, etPrice, etMonitorId;
-    private TextView tvCurrentMonitor;
     private CheckBox cbActive;
     private Button btnSave;
+    private TextView tvCurrentMonitor;
     private ActivityPresenter presenter;
     private long activityId = -1;
-
-    @Override
-    public void onActivityLoaded(Activity activity) {
-        etName.setText(activity.getName());
-        etDescription.setText(activity.getDescription());
-        etCapacity.setText(String.valueOf(activity.getCapacity()));
-        etDuration.setText(String.valueOf(activity.getDurationMinutes()));
-        etPrice.setText(String.valueOf(activity.getPricePerSession()));
-        etMonitorId.setText(String.valueOf(activity.getMonitorId()));
-        cbActive.setChecked(activity.isActive());
-        tvCurrentMonitor.setText("Monitor actual: " + activity.getMonitorName());
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +49,11 @@ public class ActivityFormActivity extends AppCompatActivity implements ActivityC
 
         if (getIntent().hasExtra("activity_id")) {
             activityId = getIntent().getLongExtra("activity_id", -1);
-            getSupportActionBar().setTitle("Editar actividad");
+            getSupportActionBar().setTitle(getString(R.string.edit_activity));
             presenter.loadActivity(activityId);
         } else {
             tvCurrentMonitor.setVisibility(android.view.View.GONE);
-            getSupportActionBar().setTitle("Nueva actividad");
+            getSupportActionBar().setTitle(getString(R.string.new_activity));
         }
 
         btnSave.setOnClickListener(v -> {
@@ -75,25 +63,25 @@ public class ActivityFormActivity extends AppCompatActivity implements ActivityC
             String monitorIdStr = etMonitorId.getText().toString().trim();
 
             if (name.isEmpty()) {
-                etName.setError("El nombre es obligatorio");
+                etName.setError(getString(R.string.error_first_name));
                 etName.requestFocus();
                 return;
             }
 
             if (capacityStr.isEmpty() || Integer.parseInt(capacityStr) < 1) {
-                etCapacity.setError("La capacidad mínima es 1");
+                etCapacity.setError(getString(R.string.error_capacity));
                 etCapacity.requestFocus();
                 return;
             }
 
             if (durationStr.isEmpty() || Integer.parseInt(durationStr) < 15) {
-                etDuration.setError("La duración mínima es 15 minutos");
+                etDuration.setError(getString(R.string.error_duration));
                 etDuration.requestFocus();
                 return;
             }
 
             if (monitorIdStr.isEmpty() || Long.parseLong(monitorIdStr) < 1) {
-                etMonitorId.setError("El ID del monitor es obligatorio");
+                etMonitorId.setError(getString(R.string.error_monitor_id));
                 etMonitorId.requestFocus();
                 return;
             }
@@ -128,8 +116,20 @@ public class ActivityFormActivity extends AppCompatActivity implements ActivityC
     public void onActivitiesLoaded(List<Activity> activities) {}
 
     @Override
+    public void onActivityLoaded(Activity activity) {
+        etName.setText(activity.getName());
+        etDescription.setText(activity.getDescription());
+        etCapacity.setText(String.valueOf(activity.getCapacity()));
+        etDuration.setText(String.valueOf(activity.getDurationMinutes()));
+        etPrice.setText(String.valueOf(activity.getPricePerSession()));
+        etMonitorId.setText(String.valueOf(activity.getMonitorId()));
+        cbActive.setChecked(activity.isActive());
+        tvCurrentMonitor.setText(getString(R.string.current_monitor) + activity.getMonitorName());
+    }
+
+    @Override
     public void onActivitySaved() {
-        Toast.makeText(this, "Actividad guardada correctamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.activity_saved), Toast.LENGTH_SHORT).show();
         finish();
     }
 

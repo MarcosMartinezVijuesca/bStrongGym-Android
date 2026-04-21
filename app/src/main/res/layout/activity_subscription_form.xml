@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tipo de suscripción:"
+        android:text="@string/subscription_type"
         android:textStyle="bold"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"/>
@@ -53,7 +53,7 @@
         android:id="@+id/et_startDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Fecha inicio (YYYY-MM-DD)"
+        android:hint="@string/start_date"
         android:inputType="text"
         android:layout_marginBottom="12dp"/>
 
@@ -61,7 +61,7 @@
         android:id="@+id/et_endDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Fecha fin (YYYY-MM-DD)"
+        android:hint="@string/end_date"
         android:inputType="text"
         android:layout_marginBottom="12dp"/>
 
@@ -69,7 +69,7 @@
         android:id="@+id/et_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Precio"
+        android:hint="@string/price"
         android:inputType="numberDecimal"
         android:layout_marginBottom="12dp"/>
 
@@ -77,7 +77,7 @@
         android:id="@+id/et_memberId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ID del socio"
+        android:hint="@string/member_id"
         android:inputType="number"
         android:layout_marginBottom="12dp"/>
 
@@ -85,7 +85,7 @@
         android:id="@+id/cb_active"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activa"
+        android:text="@string/active_f"
         android:checked="true"
         android:layout_marginBottom="8dp"/>
 
@@ -93,13 +93,13 @@
         android:id="@+id/cb_autoRenewal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Renovación automática"
+        android:text="@string/auto_renewal"
         android:layout_marginBottom="24dp"/>
 
     <Button
         android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Guardar"/>
+        android:text="@string/save"/>
 
 </LinearLayout>

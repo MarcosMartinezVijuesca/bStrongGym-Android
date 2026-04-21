@@ -37,7 +37,7 @@ public class ActivitiesActivity extends AppCompatActivity implements ActivityCon
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Actividades");
+        getSupportActionBar().setTitle(getString(R.string.activities));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         presenter = new ActivityPresenter(this);
@@ -49,10 +49,10 @@ public class ActivitiesActivity extends AppCompatActivity implements ActivityCon
 
         adapter = new ActivityAdapter(activityList, this, activity -> {
             new AlertDialog.Builder(this)
-                    .setTitle("Eliminar actividad")
-                    .setMessage("¿Estás seguro de que quieres eliminar " + activity.getName() + "?")
-                    .setPositiveButton("Eliminar", (dialog, which) -> presenter.deleteActivity(activity.getId()))
-                    .setNegativeButton("Cancelar", null)
+                    .setTitle(getString(R.string.delete))
+                    .setMessage(getString(R.string.confirm_delete) + " " + activity.getName() + "?")
+                    .setPositiveButton(getString(R.string.delete), (dialog, which) -> presenter.deleteActivity(activity.getId()))
+                    .setNegativeButton(getString(R.string.cancel), null)
                     .show();
         });
 
@@ -94,6 +94,9 @@ public class ActivitiesActivity extends AppCompatActivity implements ActivityCon
     }
 
     @Override
+    public void onActivityLoaded(Activity activity) {}
+
+    @Override
     public void onActivitySaved() {
         presenter.loadActivities();
     }
@@ -106,9 +109,9 @@ public class ActivitiesActivity extends AppCompatActivity implements ActivityCon
     @Override
     public void onError(String message) {
         new AlertDialog.Builder(this)
-                .setTitle("Error")
+                .setTitle(getString(R.string.error_title))
                 .setMessage(message)
-                .setPositiveButton("OK", null)
+                .setPositiveButton(getString(R.string.ok), null)
                 .show();
     }
 
@@ -117,6 +120,4 @@ public class ActivitiesActivity extends AppCompatActivity implements ActivityCon
         super.onResume();
         presenter.loadActivities();
     }
-    @Override
-    public void onActivityLoaded(Activity activity) {}
 }

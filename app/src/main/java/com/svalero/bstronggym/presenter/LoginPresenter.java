@@ -20,33 +20,22 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void login(String username, String password) {
-        if (username.isEmpty() || password.isEmpty()) {
-            view.onLoginError("Por favor, rellena todos los campos");
-            return;
-        }
-
+    public void login(String username, String password, String errorMessage) {
         User user = userDao.login(username, password);
         if (user != null) {
             view.onLoginSuccess(user);
         } else {
-            view.onLoginError("Usuario o contraseña incorrectos");
+            view.onLoginError(errorMessage);
         }
     }
 
     @Override
-    public void register(String username, String password, String role) {
-        if (username.isEmpty() || password.isEmpty()) {
-            view.onRegisterError("Por favor, rellena todos los campos");
-            return;
-        }
-
+    public void register(String username, String password, String role, String errorMessage) {
         User existing = userDao.findByUsername(username);
         if (existing != null) {
-            view.onRegisterError("Ese nombre de usuario ya existe");
+            view.onRegisterError(errorMessage);
             return;
         }
-
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setPassword(password);

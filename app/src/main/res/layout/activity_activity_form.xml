@@ -18,7 +18,7 @@
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre"
+        android:hint="@string/first_name"
         android:inputType="text"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="12dp"/>
@@ -27,7 +27,7 @@
         android:id="@+id/et_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descripción"
+        android:hint="@string/description"
         android:inputType="text"
         android:layout_marginBottom="12dp"/>
 
@@ -35,7 +35,7 @@
         android:id="@+id/et_capacity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Capacidad"
+        android:hint="@string/capacity"
         android:inputType="number"
         android:layout_marginBottom="12dp"/>
 
@@ -43,7 +43,7 @@
         android:id="@+id/et_duration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Duración (minutos)"
+        android:hint="@string/duration"
         android:inputType="number"
         android:layout_marginBottom="12dp"/>
 
@@ -51,7 +51,7 @@
         android:id="@+id/et_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Precio por sesión"
+        android:hint="@string/price_per_session"
         android:inputType="numberDecimal"
         android:layout_marginBottom="12dp"/>
 
@@ -67,7 +67,7 @@
         android:id="@+id/et_monitorId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ID del monitor"
+        android:hint="@string/monitor_id"
         android:inputType="number"
         android:layout_marginBottom="12dp"/>
 
@@ -75,7 +75,7 @@
         android:id="@+id/cb_active"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activa"
+        android:text="@string/active_f"
         android:checked="true"
         android:layout_marginBottom="24dp"/>
 
@@ -83,6 +83,6 @@
         android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Guardar"/>
+        android:text="@string/save"/>
 
 </LinearLayout>

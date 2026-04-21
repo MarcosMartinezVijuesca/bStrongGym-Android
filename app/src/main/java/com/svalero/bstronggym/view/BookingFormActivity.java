@@ -53,9 +53,9 @@ public class BookingFormActivity extends AppCompatActivity implements BookingCon
             etReviewNote.setText(String.valueOf(getIntent().getIntExtra("booking_reviewNote", 0)));
             etReviewText.setText(getIntent().getStringExtra("booking_reviewText"));
             cbAttended.setChecked(getIntent().getBooleanExtra("booking_attended", false));
-            getSupportActionBar().setTitle("Editar reserva");
+            getSupportActionBar().setTitle(getString(R.string.edit_booking));
         } else {
-            getSupportActionBar().setTitle("Nueva reserva");
+            getSupportActionBar().setTitle(getString(R.string.new_booking));
         }
 
         btnSave.setOnClickListener(v -> {
@@ -64,19 +64,19 @@ public class BookingFormActivity extends AppCompatActivity implements BookingCon
             String activityIdStr = etActivityId.getText().toString().trim();
 
             if (bookingDate.isEmpty() || !bookingDate.matches("\\d{4}-\\d{2}-\\d{2}")) {
-                etBookingDate.setError("Fecha obligatoria con formato YYYY-MM-DD");
+                etBookingDate.setError(getString(R.string.error_booking_date));
                 etBookingDate.requestFocus();
                 return;
             }
 
             if (memberIdStr.isEmpty() || Long.parseLong(memberIdStr) < 1) {
-                etMemberId.setError("El ID del socio es obligatorio");
+                etMemberId.setError(getString(R.string.error_member_id));
                 etMemberId.requestFocus();
                 return;
             }
 
             if (activityIdStr.isEmpty() || Long.parseLong(activityIdStr) < 1) {
-                etActivityId.setError("El ID de la actividad es obligatorio");
+                etActivityId.setError(getString(R.string.error_activity_id));
                 etActivityId.requestFocus();
                 return;
             }
@@ -85,7 +85,7 @@ public class BookingFormActivity extends AppCompatActivity implements BookingCon
             if (!reviewNoteStr.isEmpty()) {
                 int note = Integer.parseInt(reviewNoteStr);
                 if (note < 1 || note > 5) {
-                    etReviewNote.setError("La valoración debe estar entre 1 y 5");
+                    etReviewNote.setError(getString(R.string.error_review_note));
                     etReviewNote.requestFocus();
                     return;
                 }
@@ -127,7 +127,7 @@ public class BookingFormActivity extends AppCompatActivity implements BookingCon
 
     @Override
     public void onBookingSaved() {
-        Toast.makeText(this, "Reserva guardada correctamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.booking_saved), Toast.LENGTH_SHORT).show();
         finish();
     }
 

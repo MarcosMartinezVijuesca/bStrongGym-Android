@@ -41,15 +41,14 @@ public class MemberFormActivity extends AppCompatActivity implements MemberContr
         cbActive = findViewById(R.id.cb_active);
         btnSave = findViewById(R.id.btn_save);
 
-        // Si viene con datos es edición, si no es creación
         if (getIntent().hasExtra("member_id")) {
             memberId = getIntent().getLongExtra("member_id", -1);
             etFirstName.setText(getIntent().getStringExtra("member_firstName"));
             etLastName.setText(getIntent().getStringExtra("member_lastName"));
             cbActive.setChecked(getIntent().getBooleanExtra("member_active", true));
-            getSupportActionBar().setTitle("Editar socio");
+            getSupportActionBar().setTitle(getString(R.string.edit_member));
         } else {
-            getSupportActionBar().setTitle("Nuevo socio");
+            getSupportActionBar().setTitle(getString(R.string.new_member));
         }
 
         btnSave.setOnClickListener(v -> {
@@ -57,14 +56,21 @@ public class MemberFormActivity extends AppCompatActivity implements MemberContr
             String lastName = etLastName.getText().toString().trim();
             String birthDate = etBirthDate.getText().toString().trim();
 
-            if (firstName.isEmpty() || lastName.isEmpty()) {
-                Toast.makeText(this, "Nombre y apellidos son obligatorios", Toast.LENGTH_SHORT).show();
+            if (firstName.isEmpty()) {
+                etFirstName.setError(getString(R.string.error_first_name));
+                etFirstName.requestFocus();
                 return;
             }
 
-            // Validar formato fecha YYYY-MM-DD
+            if (lastName.isEmpty()) {
+                etLastName.setError(getString(R.string.error_last_name));
+                etLastName.requestFocus();
+                return;
+            }
+
             if (!birthDate.isEmpty() && !birthDate.matches("\\d{4}-\\d{2}-\\d{2}")) {
-                Toast.makeText(this, "Fecha debe tener formato YYYY-MM-DD (ej: 2000-05-05)", Toast.LENGTH_SHORT).show();
+                etBirthDate.setError(getString(R.string.error_date_format));
+                etBirthDate.requestFocus();
                 return;
             }
 
@@ -99,7 +105,7 @@ public class MemberFormActivity extends AppCompatActivity implements MemberContr
 
     @Override
     public void onMemberSaved() {
-        Toast.makeText(this, "Socio guardado correctamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.member_saved), Toast.LENGTH_SHORT).show();
         finish();
     }
 

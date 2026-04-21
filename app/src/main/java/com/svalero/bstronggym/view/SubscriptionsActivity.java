@@ -35,7 +35,7 @@ public class SubscriptionsActivity extends AppCompatActivity implements Subscrip
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Suscripciones");
+        getSupportActionBar().setTitle(getString(R.string.subscriptions));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sessionManager = new SessionManager(this);
@@ -44,14 +44,13 @@ public class SubscriptionsActivity extends AppCompatActivity implements Subscrip
         rvSubscriptions = findViewById(R.id.rv_subscriptions);
         rvSubscriptions.setLayoutManager(new LinearLayoutManager(this));
 
-        // Solo el admin puede eliminar suscripciones
         adapter = new SubscriptionAdapter(subscriptionList, this, subscription -> {
             if (sessionManager.isAdmin()) {
                 new AlertDialog.Builder(this)
-                        .setTitle("Eliminar suscripción")
-                        .setMessage("¿Estás seguro de que quieres eliminar esta suscripción?")
-                        .setPositiveButton("Eliminar", (dialog, which) -> presenter.deleteSubscription(subscription.getId()))
-                        .setNegativeButton("Cancelar", null)
+                        .setTitle(getString(R.string.delete))
+                        .setMessage(getString(R.string.confirm_delete) + "?")
+                        .setPositiveButton(getString(R.string.delete), (dialog, which) -> presenter.deleteSubscription(subscription.getId()))
+                        .setNegativeButton(getString(R.string.cancel), null)
                         .show();
             }
         });
@@ -60,7 +59,6 @@ public class SubscriptionsActivity extends AppCompatActivity implements Subscrip
 
         FloatingActionButton fab = findViewById(R.id.fab_add_subscription);
 
-        // Solo el admin puede crear suscripciones
         if (sessionManager.isAdmin()) {
             fab.setOnClickListener(v -> startActivity(new Intent(this, SubscriptionFormActivity.class)));
         } else {
@@ -103,9 +101,9 @@ public class SubscriptionsActivity extends AppCompatActivity implements Subscrip
     @Override
     public void onError(String message) {
         new AlertDialog.Builder(this)
-                .setTitle("Error")
+                .setTitle(getString(R.string.error_title))
                 .setMessage(message)
-                .setPositiveButton("OK", null)
+                .setPositiveButton(getString(R.string.ok), null)
                 .show();
     }
 

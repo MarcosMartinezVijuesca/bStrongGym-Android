@@ -12,7 +12,7 @@ public interface LoginContract {
     }
 
     interface Presenter {
-        void login(String username, String password);
-        void register(String username, String password, String role);
+        void login(String username, String password, String errorMessage);
+        void register(String username, String password, String role, String errorMessage);
     }
 }

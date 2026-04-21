@@ -33,7 +33,7 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutContra
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Mis entrenamientos");
+        getSupportActionBar().setTitle(getString(R.string.workouts));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         presenter = new WorkoutPresenter(this, this);
@@ -43,10 +43,10 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutContra
 
         adapter = new WorkoutAdapter(workoutList, this, workout -> {
             new AlertDialog.Builder(this)
-                    .setTitle("Eliminar entrenamiento")
-                    .setMessage("¿Estás seguro de que quieres eliminar " + workout.getName() + "?")
-                    .setPositiveButton("Eliminar", (dialog, which) -> presenter.deleteWorkout(workout))
-                    .setNegativeButton("Cancelar", null)
+                    .setTitle(getString(R.string.delete))
+                    .setMessage(getString(R.string.confirm_delete) + " " + workout.getName() + "?")
+                    .setPositiveButton(getString(R.string.delete), (dialog, which) -> presenter.deleteWorkout(workout))
+                    .setNegativeButton(getString(R.string.cancel), null)
                     .show();
         });
 
@@ -83,9 +83,9 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutContra
     @Override
     public void onError(String message) {
         new AlertDialog.Builder(this)
-                .setTitle("Error")
+                .setTitle(getString(R.string.error_title))
                 .setMessage(message)
-                .setPositiveButton("OK", null)
+                .setPositiveButton(getString(R.string.ok), null)
                 .show();
     }
 

@@ -22,7 +22,7 @@ public class MapActivity extends AppCompatActivity {
     private MapView map;
     private static final int LOCATION_PERMISSION_REQUEST = 1;
 
-    // Coordenadas del gimnasio (Zaragoza de ejemplo, cámbiala si quieres)
+    // Coordenadas del gimnasio
     private static final double GYM_LAT = 41.6768;
     private static final double GYM_LON = -0.8899;
 
@@ -36,7 +36,7 @@ public class MapActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Ubicación del gimnasio");
+        getSupportActionBar().setTitle(getString(R.string.gym_location));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         map = findViewById(R.id.map);

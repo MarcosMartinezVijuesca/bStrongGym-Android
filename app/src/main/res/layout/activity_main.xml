@@ -33,49 +33,50 @@
         android:id="@+id/btn_members"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Socios"
+        android:text="@string/members"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btn_activities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Actividades"
+        android:text="@string/activities"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btn_bookings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reservas"
+        android:text="@string/bookings"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btn_monitors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Monitores"
+        android:text="@string/monitors"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btn_workouts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mis entrenamientos"
+        android:text="@string/workouts"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btn_subscriptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Suscripciones"
+        android:text="@string/subscriptions"
+
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btn_map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mapa del gimnasio"
+        android:text="@string/map"
         android:layout_marginBottom="12dp"/>
 
 

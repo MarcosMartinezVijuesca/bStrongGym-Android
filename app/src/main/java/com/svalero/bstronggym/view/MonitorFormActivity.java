@@ -51,9 +51,9 @@ public class MonitorFormActivity extends AppCompatActivity implements MonitorCon
             etSalary.setText(String.valueOf(getIntent().getFloatExtra("monitor_salary", 0)));
             etHireDate.setText(getIntent().getStringExtra("monitor_hireDate"));
             cbAvailable.setChecked(getIntent().getBooleanExtra("monitor_available", true));
-            getSupportActionBar().setTitle("Editar monitor");
+            getSupportActionBar().setTitle(getString(R.string.edit_monitor));
         } else {
-            getSupportActionBar().setTitle("Nuevo monitor");
+            getSupportActionBar().setTitle(getString(R.string.new_monitor));
         }
 
         btnSave.setOnClickListener(v -> {
@@ -62,19 +62,19 @@ public class MonitorFormActivity extends AppCompatActivity implements MonitorCon
             String hireDate = etHireDate.getText().toString().trim();
 
             if (name.isEmpty()) {
-                etName.setError("El nombre es obligatorio");
+                etName.setError(getString(R.string.error_first_name));
                 etName.requestFocus();
                 return;
             }
 
             if (dni.isEmpty() || dni.length() != 9) {
-                etDni.setError("El DNI debe tener exactamente 9 caracteres");
+                etDni.setError(getString(R.string.error_dni));
                 etDni.requestFocus();
                 return;
             }
 
             if (!hireDate.isEmpty() && !hireDate.matches("\\d{4}-\\d{2}-\\d{2}")) {
-                etHireDate.setError("Formato incorrecto, usa YYYY-MM-DD");
+                etHireDate.setError(getString(R.string.error_date_format));
                 etHireDate.requestFocus();
                 return;
             }
@@ -109,7 +109,7 @@ public class MonitorFormActivity extends AppCompatActivity implements MonitorCon
 
     @Override
     public void onMonitorSaved() {
-        Toast.makeText(this, "Monitor guardado correctamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.monitor_saved), Toast.LENGTH_SHORT).show();
         finish();
     }
 

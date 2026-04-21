@@ -17,7 +17,7 @@
         android:id="@+id/et_search_member_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Filtrar por ID de socio..."
+        android:hint="@string/search_by_member_id"
         android:padding="12dp"
         android:inputType="number"/>
 

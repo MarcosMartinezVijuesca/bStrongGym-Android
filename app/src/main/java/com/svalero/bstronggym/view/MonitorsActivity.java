@@ -37,7 +37,7 @@ public class MonitorsActivity extends AppCompatActivity implements MonitorContra
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Monitores");
+        getSupportActionBar().setTitle(getString(R.string.monitors));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         presenter = new MonitorPresenter(this);
@@ -49,10 +49,10 @@ public class MonitorsActivity extends AppCompatActivity implements MonitorContra
 
         adapter = new MonitorAdapter(monitorList, this, monitor -> {
             new AlertDialog.Builder(this)
-                    .setTitle("Eliminar monitor")
-                    .setMessage("¿Estás seguro de que quieres eliminar a " + monitor.getName() + "?")
-                    .setPositiveButton("Eliminar", (dialog, which) -> presenter.deleteMonitor(monitor.getId()))
-                    .setNegativeButton("Cancelar", null)
+                    .setTitle(getString(R.string.delete))
+                    .setMessage(getString(R.string.confirm_delete) + " " + monitor.getName() + "?")
+                    .setPositiveButton(getString(R.string.delete), (dialog, which) -> presenter.deleteMonitor(monitor.getId()))
+                    .setNegativeButton(getString(R.string.cancel), null)
                     .show();
         });
 
@@ -106,9 +106,9 @@ public class MonitorsActivity extends AppCompatActivity implements MonitorContra
     @Override
     public void onError(String message) {
         new AlertDialog.Builder(this)
-                .setTitle("Error")
+                .setTitle(getString(R.string.error_title))
                 .setMessage(message)
-                .setPositiveButton("OK", null)
+                .setPositiveButton(getString(R.string.ok), null)
                 .show();
     }
 

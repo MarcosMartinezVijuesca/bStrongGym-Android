@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         btnSubscriptions = findViewById(R.id.btn_subscriptions);
         btnMap = findViewById(R.id.btn_map);
 
-        tvWelcome.setText("Bienvenido, " + sessionManager.getUsername());
-        tvRole.setText("Rol: " + sessionManager.getRole());
+        tvWelcome.setText(getString(R.string.welcome) + sessionManager.getUsername());
+        tvRole.setText(getString(R.string.role) + sessionManager.getRole());
 
         // Solo el admin ve el botón de socios
         if (!sessionManager.isAdmin()) {

@@ -18,7 +18,7 @@
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre"
+        android:hint="@string/first_name"
         android:inputType="text"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="12dp"/>
@@ -27,7 +27,7 @@
         android:id="@+id/et_dni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="DNI (9 caracteres)"
+        android:hint="@string/dni"
         android:inputType="text"
         android:maxLength="9"
         android:layout_marginBottom="12dp"/>
@@ -36,7 +36,7 @@
         android:id="@+id/et_specialty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Especialidad"
+        android:hint="@string/specialty"
         android:inputType="text"
         android:layout_marginBottom="12dp"/>
 
@@ -44,7 +44,7 @@
         android:id="@+id/et_salary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Salario"
+        android:hint="@string/salary"
         android:inputType="numberDecimal"
         android:layout_marginBottom="12dp"/>
 
@@ -52,7 +52,7 @@
         android:id="@+id/et_hireDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Fecha de contratación (YYYY-MM-DD)"
+        android:hint="@string/hire_date"
         android:inputType="text"
         android:layout_marginBottom="12dp"/>
 
@@ -60,7 +60,7 @@
         android:id="@+id/cb_available"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Disponible"
+        android:text="@string/available"
         android:checked="true"
         android:layout_marginBottom="24dp"/>
 
@@ -68,6 +68,6 @@
         android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Guardar"/>
+        android:text="@string/save"/>
 
 </LinearLayout>

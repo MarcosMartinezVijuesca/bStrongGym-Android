@@ -9,7 +9,7 @@
         android:id="@+id/et_dialog_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Usuario"
+        android:hint="@string/username"
         android:inputType="text"
         android:layout_marginBottom="12dp"/>
 
@@ -17,14 +17,14 @@
         android:id="@+id/et_dialog_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:layout_marginBottom="12dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Selecciona tu rol:"
+        android:text="@string/select_role"
         android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 

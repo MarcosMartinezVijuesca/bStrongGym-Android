@@ -47,9 +47,9 @@ public class WorkoutFormActivity extends AppCompatActivity implements WorkoutCon
             etDuration.setText(String.valueOf(getIntent().getIntExtra("workout_duration", 0)));
             etDate.setText(getIntent().getStringExtra("workout_date"));
             etCalories.setText(String.valueOf(getIntent().getIntExtra("workout_calories", 0)));
-            getSupportActionBar().setTitle("Editar entrenamiento");
+            getSupportActionBar().setTitle(getString(R.string.edit_workout));
         } else {
-            getSupportActionBar().setTitle("Nuevo entrenamiento");
+            getSupportActionBar().setTitle(getString(R.string.new_workout));
         }
 
         btnSave.setOnClickListener(v -> {
@@ -57,13 +57,13 @@ public class WorkoutFormActivity extends AppCompatActivity implements WorkoutCon
             String date = etDate.getText().toString().trim();
 
             if (name.isEmpty()) {
-                etName.setError("El nombre es obligatorio");
+                etName.setError(getString(R.string.error_workout_name));
                 etName.requestFocus();
                 return;
             }
 
             if (!date.isEmpty() && !date.matches("\\d{4}-\\d{2}-\\d{2}")) {
-                etDate.setError("Formato incorrecto, usa YYYY-MM-DD");
+                etDate.setError(getString(R.string.error_date_format));
                 etDate.requestFocus();
                 return;
             }
@@ -101,7 +101,7 @@ public class WorkoutFormActivity extends AppCompatActivity implements WorkoutCon
 
     @Override
     public void onWorkoutSaved() {
-        Toast.makeText(this, "Entrenamiento guardado correctamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.workout_saved), Toast.LENGTH_SHORT).show();
         finish();
     }
 

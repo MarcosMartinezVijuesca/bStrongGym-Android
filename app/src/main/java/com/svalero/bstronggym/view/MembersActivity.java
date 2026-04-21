@@ -37,7 +37,7 @@ public class MembersActivity extends AppCompatActivity implements MemberContract
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Socios");
+        getSupportActionBar().setTitle(getString(R.string.members));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         presenter = new MemberPresenter(this);
@@ -49,10 +49,10 @@ public class MembersActivity extends AppCompatActivity implements MemberContract
 
         adapter = new MemberAdapter(memberList, this, member -> {
             new AlertDialog.Builder(this)
-                    .setTitle("Eliminar socio")
-                    .setMessage("¿Estás seguro de que quieres eliminar a " + member.getFirstName() + "?")
-                    .setPositiveButton("Eliminar", (dialog, which) -> presenter.deleteMember(member.getId()))
-                    .setNegativeButton("Cancelar", null)
+                    .setTitle(getString(R.string.delete))
+                    .setMessage(getString(R.string.confirm_delete) + " " + member.getFirstName() + "?")
+                    .setPositiveButton(getString(R.string.delete), (dialog, which) -> presenter.deleteMember(member.getId()))
+                    .setNegativeButton(getString(R.string.cancel), null)
                     .show();
         });
 
@@ -106,9 +106,9 @@ public class MembersActivity extends AppCompatActivity implements MemberContract
     @Override
     public void onError(String message) {
         new AlertDialog.Builder(this)
-                .setTitle("Error")
+                .setTitle(getString(R.string.error_title))
                 .setMessage(message)
-                .setPositiveButton("OK", null)
+                .setPositiveButton(getString(R.string.ok), null)
                 .show();
     }
 

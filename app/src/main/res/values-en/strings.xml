@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">bStrongGym</string>
+
+    <!-- Login -->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="register_title">Register</string>
+    <string name="select_role">Select your role:</string>
+    <string name="register_button">Register</string>
+    <string name="cancel">Cancel</string>
+    <string name="register_success">User registered. You can now log in</string>
+    <string name="error_fields_required">Please fill in all fields</string>
+    <string name="error_login">Incorrect username or password</string>
+    <string name="error_username_exists">That username already exists</string>
+
+    <!-- Main -->
+    <string name="members">Members</string>
+    <string name="activities">Activities</string>
+    <string name="bookings">Bookings</string>
+    <string name="monitors">Monitors</string>
+    <string name="workouts">My workouts</string>
+    <string name="map">Gym location</string>
+    <string name="subscriptions">Subscriptions</string>
+    <string name="logout">Logout</string>
+    <string name="welcome">Welcome, </string>
+    <string name="role">Role: </string>
+
+    <!-- Search -->
+    <string name="search_by_name">Search by name...</string>
+    <string name="search_by_member_id">Filter by member ID...</string>
+
+    <!-- Common buttons -->
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="confirm_delete">Are you sure you want to delete</string>
+    <string name="error_title">Error</string>
+    <string name="ok">OK</string>
+    <string name="active">Active</string>
+    <string name="available">Available</string>
+    <string name="attended">Attended</string>
+    <string name="active_f">Active</string>
+
+    <!-- Members -->
+    <string name="new_member">New member</string>
+    <string name="edit_member">Edit member</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="email">Email</string>
+    <string name="birth_date">Birth date (YYYY-MM-DD)</string>
+    <string name="weight">Weight (kg)</string>
+    <string name="member_saved">Member saved successfully</string>
+    <string name="error_first_name">First name is required</string>
+    <string name="error_last_name">Last name is required</string>
+    <string name="error_date_format">Wrong format, use YYYY-MM-DD (e.g. 2000-05-05)</string>
+
+    <!-- Monitors -->
+    <string name="new_monitor">New monitor</string>
+    <string name="edit_monitor">Edit monitor</string>
+    <string name="dni">ID number (9 characters)</string>
+    <string name="specialty">Specialty</string>
+    <string name="salary">Salary</string>
+    <string name="hire_date">Hire date (YYYY-MM-DD)</string>
+    <string name="monitor_saved">Monitor saved successfully</string>
+    <string name="error_dni">ID number must be exactly 9 characters</string>
+
+    <!-- Activities -->
+    <string name="new_activity">New activity</string>
+    <string name="edit_activity">Edit activity</string>
+    <string name="description">Description</string>
+    <string name="capacity">Capacity</string>
+    <string name="duration">Duration (minutes)</string>
+    <string name="price_per_session">Price per session</string>
+    <string name="monitor_id">Monitor ID</string>
+    <string name="current_monitor">Current monitor: </string>
+    <string name="activity_saved">Activity saved successfully</string>
+    <string name="error_capacity">Minimum capacity is 1</string>
+    <string name="error_duration">Minimum duration is 15 minutes</string>
+    <string name="error_monitor_id">Monitor ID is required</string>
+
+    <!-- Bookings -->
+    <string name="new_booking">New booking</string>
+    <string name="edit_booking">Edit booking</string>
+    <string name="booking_date">Booking date (YYYY-MM-DD)</string>
+    <string name="member_id">Member ID</string>
+    <string name="activity_id">Activity ID</string>
+    <string name="price_paid">Price paid</string>
+    <string name="review_note">Rating (1-5)</string>
+    <string name="review_text">Comment</string>
+    <string name="booking_saved">Booking saved successfully</string>
+    <string name="error_booking_date">Date required with format YYYY-MM-DD</string>
+    <string name="error_member_id">Member ID is required</string>
+    <string name="error_activity_id">Activity ID is required</string>
+    <string name="error_review_note">Rating must be between 1 and 5</string>
+
+    <!-- Workouts -->
+    <string name="new_workout">New workout</string>
+    <string name="edit_workout">Edit workout</string>
+    <string name="workout_name">Workout name</string>
+    <string name="workout_date">Date (YYYY-MM-DD)</string>
+    <string name="calories">Calories burned</string>
+    <string name="workout_saved">Workout saved successfully</string>
+    <string name="error_workout_name">Name is required</string>
+
+    <!-- Subscriptions -->
+    <string name="new_subscription">New subscription</string>
+    <string name="edit_subscription">Edit subscription</string>
+    <string name="subscription_type">Subscription type:</string>
+    <string name="start_date">Start date (YYYY-MM-DD)</string>
+    <string name="end_date">End date (YYYY-MM-DD)</string>
+    <string name="price">Price</string>
+    <string name="auto_renewal">Auto renewal</string>
+    <string name="subscription_saved">Subscription saved successfully</string>
+    <string name="error_start_date">Start date required with format YYYY-MM-DD</string>
+    <string name="error_end_date">End date required with format YYYY-MM-DD</string>
+
+    <!-- Map -->
+    <string name="gym_location">Gym location</string>
+    <string name="gym_name">bStrongGym</string>
+    <string name="gym_snippet">Your gym</string>
+</resources>

@@ -47,7 +47,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         btnLogin.setOnClickListener(v -> {
             String username = etUsername.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
-            presenter.login(username, password);
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, getString(R.string.error_fields_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            presenter.login(username, password, getString(R.string.error_login));
         });
 
         btnRegister.setOnClickListener(v -> showRegisterDialog());
@@ -55,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     private void showRegisterDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Registro");
+        builder.setTitle(getString(R.string.register_title));
 
         android.view.View dialogView = getLayoutInflater().inflate(R.layout.dialog_register, null);
         builder.setView(dialogView);
@@ -64,14 +68,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         EditText etDialogPassword = dialogView.findViewById(R.id.et_dialog_password);
         RadioGroup rgRole = dialogView.findViewById(R.id.rg_role);
 
-        builder.setPositiveButton("Registrar", (dialog, which) -> {
+        builder.setPositiveButton(getString(R.string.register_button), (dialog, which) -> {
             String username = etDialogUsername.getText().toString().trim();
             String password = etDialogPassword.getText().toString().trim();
             String role = rgRole.getCheckedRadioButtonId() == R.id.rb_admin ? "ADMIN" : "MEMBER";
-            presenter.register(username, password, role);
+            presenter.register(username, password, role, getString(R.string.error_username_exists));
         });
 
-        builder.setNegativeButton("Cancelar", null);
+        builder.setNegativeButton(getString(R.string.cancel), null);
         builder.show();
     }
 
@@ -88,7 +92,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void onRegisterSuccess() {
-        Toast.makeText(this, "Usuario registrado. Ya puedes iniciar sesión", Toast.LENGTH_SHORT).show();
+        // onRegisterSuccess
+        Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_SHORT).show();
     }
 
     @Override
