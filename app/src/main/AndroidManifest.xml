@@ -4,6 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,16 +13,34 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BStrongGym">
+        android:theme="@style/Theme.BStrongGym"
+        android:usesCleartextTraffic="true">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".view.MainActivity"/>
+        <activity android:name=".view.MembersActivity"/>
+        <activity android:name=".view.MemberFormActivity"/>
+        <activity android:name=".view.ActivitiesActivity"/>
+        <activity android:name=".view.ActivityFormActivity"/>
+        <activity android:name=".view.MonitorsActivity"/>
+        <activity android:name=".view.MonitorFormActivity"/>
+        <activity android:name=".view.BookingFormActivity"/>
+        <activity android:name=".view.BookingsActivity"/>
+        <activity android:name=".view.WorkoutsActivity"/>
+        <activity android:name=".view.WorkoutFormActivity"/>
+        <activity android:name=".view.MapActivity"/>
+        <activity android:name=".view.SubscriptionsActivity"/>
+        <activity android:name=".view.SubscriptionFormActivity"/>
+
+
     </application>
 
 </manifest>

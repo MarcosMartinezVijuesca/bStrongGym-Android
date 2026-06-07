@@ -1,4 +1,108 @@
 package com.svalero.bstronggym.view;
 
-public class LoginActivity {
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+
+import com.svalero.bstronggym.R;
+import com.svalero.bstronggym.contract.LoginContract;
+import com.svalero.bstronggym.model.User;
+import com.svalero.bstronggym.presenter.LoginPresenter;
+import com.svalero.bstronggym.util.SessionManager;
+
+public class LoginActivity extends AppCompatActivity implements LoginContract.View {
+
+    private EditText etUsername, etPassword;
+    private Button btnLogin, btnRegister;
+    private LoginPresenter presenter;
+    private SessionManager sessionManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+        sessionManager = new SessionManager(this);
+
+
+        if (sessionManager.isLoggedIn()) {
+            goToMain();
+            return;
+        }
+
+        presenter = new LoginPresenter(this, this);
+
+        etUsername = findViewById(R.id.et_username);
+        etPassword = findViewById(R.id.et_password);
+        btnLogin = findViewById(R.id.btn_login);
+        btnRegister = findViewById(R.id.btn_register);
+
+        btnLogin.setOnClickListener(v -> {
+            String username = etUsername.getText().toString().trim();
+            String password = etPassword.getText().toString().trim();
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, getString(R.string.error_fields_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            presenter.login(username, password, getString(R.string.error_login));
+        });
+
+        btnRegister.setOnClickListener(v -> showRegisterDialog());
+    }
+
+    private void showRegisterDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.register_title));
+
+        android.view.View dialogView = getLayoutInflater().inflate(R.layout.dialog_register, null);
+        builder.setView(dialogView);
+
+        EditText etDialogUsername = dialogView.findViewById(R.id.et_dialog_username);
+        EditText etDialogPassword = dialogView.findViewById(R.id.et_dialog_password);
+        RadioGroup rgRole = dialogView.findViewById(R.id.rg_role);
+
+        builder.setPositiveButton(getString(R.string.register_button), (dialog, which) -> {
+            String username = etDialogUsername.getText().toString().trim();
+            String password = etDialogPassword.getText().toString().trim();
+            String role = rgRole.getCheckedRadioButtonId() == R.id.rb_admin ? "ADMIN" : "MEMBER";
+            presenter.register(username, password, role, getString(R.string.error_username_exists));
+        });
+
+        builder.setNegativeButton(getString(R.string.cancel), null);
+        builder.show();
+    }
+
+    @Override
+    public void onLoginSuccess(User user) {
+        sessionManager.saveSession(user.getId(), user.getUsername(), user.getRole());
+        goToMain();
+    }
+
+    @Override
+    public void onLoginError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRegisterSuccess() {
+        // onRegisterSuccess
+        Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRegisterError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void goToMain() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
 }
